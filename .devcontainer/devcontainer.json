@@ -1,0 +1,30 @@
+{
+	"name": "Cloud Foundation Dev Container",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	
+	"features": {
+        "ghcr.io/devcontainers/features/powershell:latest": {},
+        "ghcr.io/devcontainers/features/azure-cli:latest": {},
+        "ghcr.io/mickeahlinder/devcontainer-features/tfenv:latest" : {}
+    },
+
+    "customizations": {
+        "vscode": {
+			"settings": {
+				"editor.formatOnSave": true,
+				"files.insertFinalNewline": true,
+                "window.autoDetectHighContrast": true
+			},
+			"extensions": [
+				"hashicorp.terraform",
+				"hashicorp.hcl",
+				"github.copilot",
+				"github.copilot-chat"
+            ]
+		}
+    },
+
+	"postStartCommand": "tfenv install 1.8.2 && tfenv use 1.8.2",
+
+	"runArgs": ["--name", "${localEnv:USER}_devcontainer_terraform"]
+}

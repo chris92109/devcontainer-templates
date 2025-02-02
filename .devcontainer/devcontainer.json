@@ -13,18 +13,26 @@
 			"settings": {
 				"editor.formatOnSave": true,
 				"files.insertFinalNewline": true,
-                "window.autoDetectHighContrast": true
+                "window.autoDetectHighContrast": true,
+				"editor.minimap.enabled": true
 			},
+			"keybindings": [
+				{
+					"key": "ctrl+[IntlBackslash]",
+					"command": "editor.action.commentLine",
+					"when": "editorTextFocus && !editorReadonly"
+				}
+			],
 			"extensions": [
 				"hashicorp.terraform",
 				"hashicorp.hcl",
-				"github.copilot",
-				"github.copilot-chat"
+				"openai.openai-chatgpt-adhoc",
+				"ms-vscode.azurecli"
             ]
 		}
     },
 
-	"postStartCommand": "tfenv install 1.8.2 && tfenv use 1.8.2",
+	"postStartCommand": "tfenv install 1.10.5 && tfenv use 1.10.5",
 
 	"runArgs": ["--name", "${localEnv:USER}_devcontainer_terraform"]
 }

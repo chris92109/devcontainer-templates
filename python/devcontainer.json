@@ -1,11 +1,11 @@
 {
-	"name": "Cloud Foundation Dev Container",
+	"name": "Python Dev Container",
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	
 	"features": {
         "ghcr.io/devcontainers/features/powershell:latest": {},
         "ghcr.io/devcontainers/features/azure-cli:latest": {},
-        "ghcr.io/mickeahlinder/devcontainer-features/tfenv:latest" : {}
+        "ghcr.io/devcontainers/templates/python:latest" : {}
     },
 
     "customizations": {
@@ -27,12 +27,13 @@
 				"hashicorp.terraform",
 				"hashicorp.hcl",
 				"openai.openai-chatgpt-adhoc",
-				"ms-vscode.azurecli"
+				"ms-vscode.azurecli",
+				"ms-python.python"
             ]
 		}
     },
 
-	"postStartCommand": "tfenv install 1.10.5 && tfenv use 1.10.5",
+	"postStartCommand": "tfenv install 1.12.1 && tfenv use 1.12.1",
 
-	"runArgs": ["--name", "${localEnv:USER}_devcontainer_terraform"]
+	"runArgs": ["--name", "${localEnv:USER}_devcontainer_python"]
 }

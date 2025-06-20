@@ -1,0 +1,41 @@
+{
+	"name": ".NET Dev Container",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	
+	"features": {
+        "ghcr.io/devcontainers/features/powershell:latest": {},
+        "ghcr.io/devcontainers/features/azure-cli:latest": {},
+        "ghcr.io/devcontainers/templates/dotnet-postgres:latest" : {}
+    },
+
+    "customizations": {
+        "vscode": {
+			"settings": {
+				"editor.formatOnSave": true,
+				"files.insertFinalNewline": true,
+                "window.autoDetectHighContrast": true,
+				"editor.minimap.enabled": true
+			},
+			"keybindings": [
+				{
+					"key": "ctrl+[IntlBackslash]",
+					"command": "editor.action.commentLine",
+					"when": "editorTextFocus && !editorReadonly"
+				}
+			],
+			"extensions": [
+				"hashicorp.terraform",
+				"hashicorp.hcl",
+				"openai.openai-chatgpt-adhoc",
+				"ms-vscode.azurecli",
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.csdevkit",
+				"cweijan.vscode-postgresql-client2"
+            ]
+		}
+    },
+
+	"postStartCommand": "tfenv install 1.12.1 && tfenv use 1.12.1",
+
+	"runArgs": ["--name", "${localEnv:USER}_devcontainer_dotnet"]
+}

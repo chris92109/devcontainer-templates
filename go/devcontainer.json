@@ -1,19 +1,19 @@
 {
 	"name": "Go Dev Container",
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
-	
 	"features": {
-        "ghcr.io/devcontainers/features/powershell:latest": {},
-        "ghcr.io/devcontainers/features/azure-cli:latest": {},
-        "ghcr.io/mickeahlinder/devcontainer-features/tfenv:latest" : {}
-    },
-
-    "customizations": {
-        "vscode": {
+		"ghcr.io/devcontainers/features/powershell:latest": {},
+		"ghcr.io/devcontainers/features/azure-cli:latest": {},
+		"ghcr.io/mickeahlinder/devcontainer-features/tfenv:latest": {},
+		"ghcr.io/devcontainers/features/go:latest": {},
+		"ghcr.io/devcontainers/features/node:latest": {}
+	},
+	"customizations": {
+		"vscode": {
 			"settings": {
 				"editor.formatOnSave": true,
 				"files.insertFinalNewline": true,
-                "window.autoDetectHighContrast": true,
+				"window.autoDetectHighContrast": true,
 				"editor.minimap.enabled": true
 			},
 			"keybindings": [
@@ -28,11 +28,12 @@
 				"hashicorp.hcl",
 				"openai.openai-chatgpt-adhoc",
 				"ms-vscode.azurecli"
-            ]
+			]
 		}
-    },
-
+	},
 	"postStartCommand": "tfenv install 1.12.1 && tfenv use 1.12.1",
-
-	"runArgs": ["--name", "${localEnv:USER}_devcontainer_go"]
+	"runArgs": [
+		"--name",
+		"${localEnv:USER}_go_terraform"
+	]
 }
